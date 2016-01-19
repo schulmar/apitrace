@@ -898,6 +898,7 @@ dumpShadersUniforms(StateWriter &writer, Context &context)
     if (program) {
         dumpTransformFeedback(writer, program);
     }
+    dumpShaderStorageBuffers(writer, context);
     writer.endObject();
     writer.endMember(); // buffers
 }

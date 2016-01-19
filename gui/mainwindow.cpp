@@ -24,6 +24,7 @@
 #include "vertexdatainterpreter.h"
 #include "trace_profiler.hpp"
 #include "image/image.hpp"
+#include "bufferviewer.h"
 
 #include <QAction>
 #include <QApplication>
@@ -56,6 +57,36 @@ MainWindow::MainWindow()
     updateActionsState(false);
     initObjects();
     initConnections();
+    {
+      auto window = new QMainWindow();
+      auto widget = new BufferViewer(window);
+      window->setCentralWidget(widget);
+      struct Data {
+        float f;
+        int i;
+        bool b;
+        double d;
+      } data;
+      data.f = 1;
+      data.i = 2;
+      data.b = true;
+      data.d = 3.14;
+      QByteArray bufferData(reinterpret_cast<const char *>(&data),
+                            sizeof(data));
+      widget->setBufferData(bufferData);
+      GLSLStruct glslStruct;
+      glslStruct.sizeInArray = sizeof(data);
+      glslStruct.members.push_back(std::unique_ptr<GLSLStruct::MemberBase>(
+                new GLSLStruct::Member<float>("f", offsetof(Data, f))));
+      glslStruct.members.push_back(std::unique_ptr<GLSLStruct::MemberBase>(
+                new GLSLStruct::Member<int>("i", offsetof(Data, i))));
+      glslStruct.members.push_back(std::unique_ptr<GLSLStruct::MemberBase>(
+                new GLSLStruct::Member<bool>("b", offsetof(Data, b))));
+      glslStruct.members.push_back(std::unique_ptr<GLSLStruct::MemberBase>(
+          new GLSLStruct::Member<double>("d", offsetof(Data, d))));
+      widget->setDataLayout(std::move(glslStruct));
+      window->show();
+    }
 }
 
 MainWindow::~MainWindow()

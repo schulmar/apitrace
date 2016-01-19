@@ -59,6 +59,7 @@ set(qapitrace_SRCS
    graphing/heatmapverticalaxiswidget.cpp
    graphing/histogramview.cpp
    graphing/timeaxiswidget.cpp
+   bufferviewer.cpp
  )
 
 qt5_add_resources(qapitrace_SRCS qapitrace.qrc)
@@ -77,6 +78,7 @@ set(qapitrace_UIS
    ui/tracedialog.ui
    ui/searchwidget.ui
    ui/shaderssourcewidget.ui
+   ui/bufferviewer.ui
    )
 
 set (CMAKE_AUTOMOC ON)

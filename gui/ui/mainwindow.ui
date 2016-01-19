@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>787</width>
-     <height>24</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -125,7 +125,7 @@
     <bool>false</bool>
    </property>
    <property name="windowTitle">
-    <string>Call Details</string>
+    <string>&amp;Call Details</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -155,7 +155,7 @@
     <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
    <property name="windowTitle">
-    <string>Current State</string>
+    <string>C&amp;urrent State</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -165,7 +165,7 @@
      <item>
       <widget class="QTabWidget" name="stateTabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>4</number>
        </property>
        <widget class="QWidget" name="parametersTab">
         <attribute name="title">
@@ -309,7 +309,7 @@
     <set>Qt::AllDockWidgetAreas</set>
    </property>
    <property name="windowTitle">
-    <string>Vertex Data</string>
+    <string>Verte&amp;x Data</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
@@ -492,7 +492,7 @@
     <set>QDockWidget::AllDockWidgetFeatures</set>
    </property>
    <property name="windowTitle">
-    <string>Errors</string>
+    <string>E&amp;rrors</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -526,7 +526,7 @@
   </widget>
   <widget class="QDockWidget" name="backtraceDock">
    <property name="windowTitle">
-    <string>Backtrace</string>
+    <string>Bac&amp;ktrace</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>
@@ -618,7 +618,7 @@
      <normaloff>:/resources/media-record.png</normaloff>:/resources/media-record.png</iconset>
    </property>
    <property name="text">
-    <string>Lookup State</string>
+    <string>&amp;Lookup State</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+L</string>
@@ -642,7 +642,7 @@
   </action>
   <action name="actionOptions">
    <property name="text">
-    <string>Options</string>
+    <string>&amp;Options</string>
    </property>
   </action>
   <action name="actionNew">
@@ -675,7 +675,7 @@
      <normaloff>:/resources/go-jump.png</normaloff>:/resources/go-jump.png</iconset>
    </property>
    <property name="text">
-    <string>Go to Call</string>
+    <string>&amp;Go to Call</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
@@ -687,7 +687,7 @@
      <normaloff>:/resources/go-top.png</normaloff>:/resources/go-top.png</iconset>
    </property>
    <property name="text">
-    <string>Go to Frame Start</string>
+    <string>Go to Frame &amp;Start</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>
@@ -699,7 +699,7 @@
      <normaloff>:/resources/go-bottom.png</normaloff>:/resources/go-bottom.png</iconset>
    </property>
    <property name="text">
-    <string>Go to Frame End</string>
+    <string>Go to Frame &amp;End</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -738,7 +738,7 @@
      <normaloff>:/resources/go-bottom.png</normaloff>:/resources/go-bottom.png</iconset>
    </property>
    <property name="text">
-    <string>Pull trace</string>
+    <string>&amp;Pull trace</string>
    </property>
   </action>
   <action name="actionPushTrace">
@@ -747,7 +747,7 @@
      <normaloff>:/resources/go-top.png</normaloff>:/resources/go-top.png</iconset>
    </property>
    <property name="text">
-    <string>Push trace</string>
+    <string>P&amp;ush trace</string>
    </property>
   </action>
   <action name="actionLinkTrace">
@@ -756,7 +756,7 @@
      <normaloff>:/resources/android-setup.png</normaloff>:/resources/android-setup.png</iconset>
    </property>
    <property name="text">
-    <string>Link trace</string>
+    <string>&amp;Link trace</string>
    </property>
   </action>
   <action name="actionSetup">
@@ -773,7 +773,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Retrace on Android</string>
+    <string>&amp;Retrace on Android</string>
    </property>
   </action>
   <zorder>stateDock</zorder>

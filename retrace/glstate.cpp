@@ -236,6 +236,51 @@ BufferMapping::~BufferMapping() {
     }
 }
 
+void dumpShaderStorageBuffers(StateWriter &writer, Context &context) {
+  // use to access buffer!
+  if (!context.ARB_direct_state_access) {
+    return;
+  }
+  GLint maxShaderStorageBindings = -1;
+  glGetIntegerv(GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS,
+                &maxShaderStorageBindings);
+  for (int shaderStorageBindingName = 0;
+       shaderStorageBindingName < maxShaderStorageBindings;
+       ++shaderStorageBindingName) {
+    GLint bufferName = -1;
+    glGetIntegeri_v(GL_SHADER_STORAGE_BUFFER_BINDING, shaderStorageBindingName,
+                    &bufferName);
+    if (bufferName > 0) {
+      writer.beginMember(
+          QString("GL_SHADER_STORAGE_BUFFER%0").arg(shaderStorageBindingName));
+      writer.beginObject();
+      GLint size = -1, offset = -1;
+      glGetIntegeri_v(GL_SHADER_STORAGE_BUFFER_SIZE, shaderStorageBindingName, &size);
+      glGetIntegeri_v(GL_SHADER_STORAGE_BUFFER_START, shaderStorageBindingName, &offset);
+      writer.beginMember("name");
+      writer.writeInt(bufferName);
+      writer.endMember();
+      writer.beginMember("size");
+      writer.writeInt(size);
+      writer.endMember();
+      writer.beginMember("offset");
+      writer.writeInt(offset);
+      writer.endMember();
+      writer.beginMember("data");
+      GLint totalSize = -1;
+      const GLintptr zeroOffset = 0;
+      glGetNamedBufferParameteriv(bufferName, GL_BUFFER_SIZE, &totalSize);
+      std::vector<char> data;
+      data.resize(totalSize);
+      glGetNamedBufferSubData(bufferName, zeroOffset, totalSize,
+                              static_cast<void *>(data.data()));
+      writer.writeBlob(data.data(), totalSize);
+      writer.endMember();
+      writer.endObject();
+      writer.endMember();
+    }
+  }
+}
 
 void
 dumpBoolean(StateWriter &writer, GLboolean value)
